@@ -7,6 +7,7 @@ import com.example.mbaningapijpapractice.features.user.dto.UserResponse;
 import com.example.mbaningapijpapractice.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -21,6 +22,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public List<UserResponse> findAllUser() {
@@ -69,8 +71,8 @@ public class UserServiceImpl implements UserService {
         user.setIsAccountNonExpired(false);
         user.setIsCredentialsNonExpired(false);
         user.setIsAccountNonLocked(false);
+        user.setPassword(passwordEncoder.encode(createUserRequest.password()));
         User savedUser = userRepository.save(user);
-
         return userMapper.toUserResponse(savedUser);
     }
 }

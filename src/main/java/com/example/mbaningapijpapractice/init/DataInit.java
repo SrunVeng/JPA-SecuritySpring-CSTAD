@@ -11,6 +11,7 @@ import com.example.mbaningapijpapractice.features.card.CardTypeRepository;
 import com.example.mbaningapijpapractice.features.user.UserRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -27,6 +28,7 @@ public class DataInit {
     private final AccountTypeRepository accountTypeRepository;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @PostConstruct
     void init() {
@@ -85,6 +87,7 @@ public class DataInit {
                 .gender("male")
                 .isVerified(false)
                 .isAccountNonLocked(true)
+                .isAccountNonExpired(true)
                 .isCredentialsNonExpired(true)
                 .isDeleted(false)
                 .mainSourceOfIncome("salary")
@@ -94,7 +97,7 @@ public class DataInit {
                 .phoneNumber("017627382")
                 .oneSignalId("546")
                 .pin("134883")
-                .password("18693")
+                .password(passwordEncoder.encode("hong@123"))
                 .uuid(UUID.randomUUID().toString())
                 .roles(roles)
                 .build();
