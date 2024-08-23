@@ -1,0 +1,15 @@
+services:
+    mobile-banking-db:
+      image: postgres:16.3-bullseye
+      container_name: mobile-banking-db
+      ports:
+        - 4441:5432
+      environment:
+        POSTGRES_PASSWORD: admin
+        POSTGRES_USER: sbc11
+        POSTGRES_DB: mobile_banking_db
+      volumes:
+        - mobile-banking-vol:/var/lib/postgresql/data
+
+volumes:
+   mobile-banking-vol:
