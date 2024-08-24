@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -72,7 +73,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<UserAccount> userAccounts;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable (
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),

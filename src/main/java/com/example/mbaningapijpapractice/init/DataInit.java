@@ -75,29 +75,29 @@ public class DataInit {
     private void UserInit() {
         List<Role> roles = new ArrayList<>();
         roles.add(roleRepository.findById(1).orElseThrow());
-        roles.add(roleRepository.findById(4).orElseThrow());
+        roles.add(roleRepository.findById(2).orElseThrow());
         User user1 = User.builder()
-                .email("hong@gmail.com")
+                .email("srunveng@cstad.com")
                 .cityOrProvince("Phnom Penh City")
-                .companyName("Vattanac Bank")
+                .companyName("ISTAD Technology Center")
                 .createdAt(LocalDate.now())
                 .isBlock(false)
-                .name("hongheng")
-                .employeeType("IT support")
+                .name("SrunVeng")
+                .employeeType("Backend Engineer")
                 .gender("male")
-                .isVerified(false)
+                .isVerified(true)
                 .isAccountNonLocked(true)
                 .isAccountNonExpired(true)
                 .isCredentialsNonExpired(true)
                 .isDeleted(false)
-                .mainSourceOfIncome("salary")
+                .mainSourceOfIncome("Salary")
                 .khanOrDistrict("Don Penh")
-                .monthlyIncomeRange(BigDecimal.valueOf(450))
+                .monthlyIncomeRange(BigDecimal.valueOf(4500))
                 .nationalCardId("32323")
                 .phoneNumber("017627382")
                 .oneSignalId("546")
                 .pin("134883")
-                .password(passwordEncoder.encode("hong@123"))
+                .password(passwordEncoder.encode("Srun@123"))
                 .uuid(UUID.randomUUID().toString())
                 .roles(roles)
                 .build();

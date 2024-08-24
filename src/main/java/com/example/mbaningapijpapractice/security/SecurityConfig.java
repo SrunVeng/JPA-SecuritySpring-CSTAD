@@ -23,7 +23,9 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(endpoint -> endpoint.anyRequest().authenticated())
+                .authorizeHttpRequests(endpoint -> endpoint
+                        .requestMatchers("/v1/api/user/create").hasAnyRole("ADMIN", "MANAGER")
+                        .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .formLogin(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
