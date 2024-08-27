@@ -27,7 +27,11 @@ dependencies {
 
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
 
+    // java mail
     implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+    // oauth2 resource (JWT)
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
 
     compileOnly 'org.mapstruct:mapstruct:1.5.5.Final'
     compileOnly 'org.projectlombok:lombok'

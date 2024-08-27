@@ -111,17 +111,17 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public void verify(VerifyRequest verifyRequest) {
 
-       User user = userRepository.findByemail(verifyRequest.email()).orElseThrow(
-                       ()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Email not found"));
+        User user = userRepository.findByemail(verifyRequest.email()).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Email not found"));
 
-       EmailVerification emailVerification =
-               emailVerificationRepository.findByUser(user).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Email not found"));
+        EmailVerification emailVerification =
+                emailVerificationRepository.findByUser(user).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Email not found"));
 
-        if(!verifyRequest.verificationCode().equals(emailVerification.getVerificationCode())) {
+        if (!verifyRequest.verificationCode().equals(emailVerification.getVerificationCode())) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Verification code does not match");
         }
 
-        if(emailVerification.getExpiryTime().isAfter(LocalTime.now())){
+        if (emailVerification.getExpiryTime().isBefore(LocalTime.now())) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Code is expired");
         }
 
