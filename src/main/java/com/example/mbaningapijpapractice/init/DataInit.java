@@ -74,7 +74,7 @@ public class DataInit {
     }
     private void UserInit() {
         List<Role> roles = new ArrayList<>();
-        roles.add(roleRepository.findById(1).orElseThrow());
+
         roles.add(roleRepository.findById(2).orElseThrow());
         User user1 = User.builder()
                 .email("srunveng@cstad.com")

@@ -37,7 +37,7 @@ public class User {
     private String email;
     @Column(nullable = false)
     private String password;
-    @Column(nullable = false, unique = true, length = 6)
+    @Column(nullable = false,  length = 6)
     private String pin;
     private String name;
     @Column(nullable = false, length = 10)

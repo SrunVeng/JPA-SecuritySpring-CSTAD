@@ -17,7 +17,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
         Boolean existsBynationalCardId(String PhoneNumber);
 
-
+        Boolean existsByPhoneNumber(String PhoneNumber);
         //JPQL
 
 
