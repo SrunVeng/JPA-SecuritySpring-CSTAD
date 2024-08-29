@@ -3,6 +3,7 @@ package com.example.mbaningapijpapractice.security;
 import com.example.mbaningapijpapractice.domain.User;
 import com.example.mbaningapijpapractice.features.user.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

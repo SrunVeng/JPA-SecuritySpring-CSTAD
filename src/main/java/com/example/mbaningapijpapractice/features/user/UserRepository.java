@@ -8,18 +8,17 @@ import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-        // Detrived method
-        Optional<User> findByPhoneNumber(String PhoneNumber);
+    // Detrived method
+    Optional<User> findByPhoneNumber(String PhoneNumber);
 
-        Optional<User> findByuuid(String uuid);
+    Optional<User> findByuuid(String uuid);
 
-        Optional<User> findByemail(String email);
+    Optional<User> findByemail(String email);
 
-        Boolean existsBynationalCardId(String PhoneNumber);
+    Boolean existsBynationalCardId(String PhoneNumber);
 
-        Boolean existsByPhoneNumber(String PhoneNumber);
-        //JPQL
-
+    Boolean existsByPhoneNumber(String PhoneNumber);
+    //JPQL
 
 
 }

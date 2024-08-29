@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
         }
         // Validate confirmPassword
 
-        if(!createUserRequest.password().equals(createUserRequest.confirmPassword())){
+        if (!createUserRequest.password().equals(createUserRequest.confirmPassword())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Password does not match");
         }
 

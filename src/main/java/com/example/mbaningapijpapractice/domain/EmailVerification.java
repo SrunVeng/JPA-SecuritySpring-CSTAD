@@ -12,7 +12,7 @@ import java.time.LocalTime;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name ="email_verification")
+@Table(name = "email_verification")
 public class EmailVerification {
 
     @Id

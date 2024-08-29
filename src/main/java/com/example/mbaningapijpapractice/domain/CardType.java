@@ -27,9 +27,8 @@ public class CardType {
     @Column(nullable = false)
     private boolean isDeleted;
 
-    @OneToMany(mappedBy="cardtype")
+    @OneToMany(mappedBy = "cardtype")
     private List<Card> cards;
-
 
 
 }

@@ -1,6 +1,8 @@
 package com.example.mbaningapijpapractice.auth;
 
 
+import com.example.mbaningapijpapractice.auth.dto.JwtResponse;
+import com.example.mbaningapijpapractice.auth.dto.LoginRequest;
 import com.example.mbaningapijpapractice.auth.dto.RegisterRequest;
 import com.example.mbaningapijpapractice.auth.dto.VerifyRequest;
 import jakarta.mail.MessagingException;
@@ -26,5 +28,11 @@ public class AuthController {
         authService.verify(verifyRequest);
     }
 
+
+    @PostMapping("/login")
+    JwtResponse login(@Valid @RequestBody LoginRequest loginRequest) {
+        return authService.login(loginRequest);
+
+    }
 
 }

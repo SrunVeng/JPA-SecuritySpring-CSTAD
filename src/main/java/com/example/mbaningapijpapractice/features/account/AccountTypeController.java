@@ -20,7 +20,7 @@ public class AccountTypeController {
     private final AccountTypeService accountTypeService;
 
     @GetMapping
-        public ResponseEntity<List<AccountTypeResponse>> findAllAccountTypes(){
+    public ResponseEntity<List<AccountTypeResponse>> findAllAccountTypes() {
         return new ResponseEntity<>(accountTypeService.findAllAccountType(), HttpStatus.OK);
     }
 

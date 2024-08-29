@@ -37,7 +37,7 @@ public class User {
     private String email;
     @Column(nullable = false)
     private String password;
-    @Column(nullable = false,  length = 6)
+    @Column(nullable = false, length = 6)
     private String pin;
     private String name;
     @Column(nullable = false, length = 10)
@@ -74,9 +74,9 @@ public class User {
     private List<UserAccount> userAccounts;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable (
+    @JoinTable(
             name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
     )
     private List<Role> roles;

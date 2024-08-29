@@ -20,9 +20,8 @@ public class AccountType {
 
     @Column(nullable = false, unique = true, length = 50)
     private String alias;
-    @Column(columnDefinition="TEXT")
+    @Column(columnDefinition = "TEXT")
     private String description;
-
 
 
     private Boolean isDeleted;
@@ -31,10 +30,8 @@ public class AccountType {
     private String name;
 
 
-    @OneToMany(mappedBy="accountType")
+    @OneToMany(mappedBy = "accountType")
     private List<Account> accounts;
-
-
 
 
 }

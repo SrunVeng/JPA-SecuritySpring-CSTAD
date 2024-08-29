@@ -15,13 +15,13 @@ public class AccountController {
     private final AccountService accountService;
 
     @PostMapping("/create")
-     void createAccount(@Valid @RequestBody CreateAccountRequest request) {
+    void createAccount(@Valid @RequestBody CreateAccountRequest request) {
         accountService.createAccount(request);
     }
 
     @GetMapping("/{actNo}")
     AccountDetailResponse findAccByActNo(@PathVariable String actNo) {
-       return accountService.findAccByActNo(actNo);
+        return accountService.findAccByActNo(actNo);
     }
 
 }

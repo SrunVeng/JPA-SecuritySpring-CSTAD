@@ -39,6 +39,7 @@ public class UserController {
     UserResponse createNewUser(@Valid @RequestBody CreateUserRequest createUserRequest) {
         return userService.createNewUser(createUserRequest);
     }
+
     @GetMapping("/phoneNo/{phoneNumber}")
     UserResponse findUserByPhoneNumber(@PathVariable String phoneNumber) {
         return userService.findUserByPhoneNumber(phoneNumber);

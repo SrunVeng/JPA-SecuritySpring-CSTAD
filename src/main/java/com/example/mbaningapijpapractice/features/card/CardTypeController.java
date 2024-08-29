@@ -17,7 +17,7 @@ public class CardTypeController {
     private final CardTypeService cardTypeService;
 
     @GetMapping
-    List<CardTypeResponse> findAllCardType(){
-       return cardTypeService.findAllCardTypes();
+    List<CardTypeResponse> findAllCardType() {
+        return cardTypeService.findAllCardTypes();
     }
 }

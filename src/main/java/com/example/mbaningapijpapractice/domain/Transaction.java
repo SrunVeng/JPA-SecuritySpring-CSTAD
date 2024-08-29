@@ -37,7 +37,7 @@ public class Transaction {
 
     private String paymentReceiver;
 
-    @Column(columnDefinition="TEXT")
+    @Column(columnDefinition = "TEXT")
     private String remark;
     private Boolean isDeleted;
 }

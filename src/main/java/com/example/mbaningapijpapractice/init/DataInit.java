@@ -72,6 +72,7 @@ public class DataInit {
         current.setIsDeleted(true);
         accountTypeRepository.saveAll(List.of(saving, payroll, current));
     }
+
     private void UserInit() {
         List<Role> roles = new ArrayList<>();
 
@@ -103,6 +104,7 @@ public class DataInit {
                 .build();
         userRepository.save(user1);
     }
+
     private void roleInit() {
         List<Role> roles = new ArrayList<>();
 
