@@ -1,9 +1,6 @@
 package com.example.mbaningapijpapractice.auth;
 
-import com.example.mbaningapijpapractice.auth.dto.JwtResponse;
-import com.example.mbaningapijpapractice.auth.dto.LoginRequest;
-import com.example.mbaningapijpapractice.auth.dto.RegisterRequest;
-import com.example.mbaningapijpapractice.auth.dto.VerifyRequest;
+import com.example.mbaningapijpapractice.auth.dto.*;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 
@@ -14,4 +11,6 @@ public interface AuthService {
     void verify(@Valid VerifyRequest verifyRequest);
 
     JwtResponse login(@Valid LoginRequest loginRequest);
+
+    JwtResponse refreshToken(@Valid RefreshTokenRequest refreshTokenRequest);
 }

@@ -1,10 +1,7 @@
 package com.example.mbaningapijpapractice.auth;
 
 
-import com.example.mbaningapijpapractice.auth.dto.JwtResponse;
-import com.example.mbaningapijpapractice.auth.dto.LoginRequest;
-import com.example.mbaningapijpapractice.auth.dto.RegisterRequest;
-import com.example.mbaningapijpapractice.auth.dto.VerifyRequest;
+import com.example.mbaningapijpapractice.auth.dto.*;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +30,11 @@ public class AuthController {
     JwtResponse login(@Valid @RequestBody LoginRequest loginRequest) {
         return authService.login(loginRequest);
 
+    }
+
+    @PostMapping("/refreshToken")
+    JwtResponse refreshToken(@Valid @RequestBody RefreshTokenRequest refreshTokenRequest ) {
+        return authService.refreshToken(refreshTokenRequest);
     }
 
 }
