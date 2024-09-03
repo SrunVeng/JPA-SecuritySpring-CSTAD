@@ -18,6 +18,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.jwt.*;
 import org.springframework.security.oauth2.server.resource.authentication.BearerTokenAuthenticationToken;
@@ -166,7 +167,7 @@ public class AuthServiceImpl implements AuthService {
         log.info("AuthorName: {}",auth.getAuthorities().toString());
 
         String scope = auth.
-                getAuthorities().stream().map(a -> a.getAuthority())
+                getAuthorities().stream().map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(" "));
 
         // Generate JWT token to response
@@ -214,7 +215,7 @@ public class AuthServiceImpl implements AuthService {
 
         String scope = auth.getAuthorities()
                 .stream()
-                .map(a -> a.getAuthority())
+                .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(" "));
 
         log.info("New Scope: {}", scope);
