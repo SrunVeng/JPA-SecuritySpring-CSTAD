@@ -1,6 +1,7 @@
-package com.example.mbaningapijpapractice.auth;
+package com.example.mbaningapijpapractice.features.auth;
 
-import com.example.mbaningapijpapractice.auth.dto.*;
+
+import com.example.mbaningapijpapractice.features.auth.dto.*;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 

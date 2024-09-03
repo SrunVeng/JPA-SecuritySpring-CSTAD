@@ -14,7 +14,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
-import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationProvider;
 import org.springframework.security.web.SecurityFilterChain;
@@ -30,9 +29,19 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(endpoint -> endpoint
-                        .requestMatchers(HttpMethod.POST, "/v1/api/user/create").hasAnyAuthority("SCOPE_ROLE_ADMIN", "SCOPE_ROLE_MANAGER")
-                        .requestMatchers(HttpMethod.POST, "/v1/api/auth/register").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/v1/api/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/v1/api/acc/**").hasAnyAuthority("SCOPE_ROLE_MANAGER","SCOPE_ROLE_ADMIN","SCOPE_ROLE_STAFF")
+                        .requestMatchers(HttpMethod.POST, "/v1/api/user/create").hasAnyAuthority("SCOPE_ROLE_ADMIN", "SCOPE_ROLE_MANAGER","SCOPE_ROLE_STAFF")
+                        .requestMatchers(HttpMethod.GET,"/v1/api/user").hasAnyAuthority("SCOPE_ROLE_ADMIN", "SCOPE_ROLE_MANAGER","SCOPE_ROLE_STAFF")
+                        .requestMatchers(HttpMethod.GET,"/v1/api/user/id").hasAnyAuthority("SCOPE_ROLE_ADMIN", "SCOPE_ROLE_MANAGER","SCOPE_ROLE_STAFF")
+                        .requestMatchers(HttpMethod.GET,"/v1/api/user/uuid").hasAnyAuthority("SCOPE_ROLE_ADMIN", "SCOPE_ROLE_MANAGER","SCOPE_ROLE_STAFF")
+                        .requestMatchers(HttpMethod.GET,"/v1/api/user/create").hasAnyAuthority("SCOPE_ROLE_ADMIN", "SCOPE_ROLE_MANAGER","SCOPE_ROLE_STAFF")
+                        .requestMatchers(HttpMethod.GET,"/v1/api/user/phoneNo").hasAnyAuthority("SCOPE_ROLE_ADMIN", "SCOPE_ROLE_MANAGER","SCOPE_ROLE_STAFF")
+                        .requestMatchers(HttpMethod.GET,"/v1/api/user/resetPassword").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/v1/api/user/verifyResetPassword").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/v1/api/card-types").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/v1/api/account-types").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/v1/api/auth/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/file/**").permitAll()
                         .anyRequest().authenticated())
                 //.httpBasic(Customizer.withDefaults())
                 .oauth2ResourceServer(oauth2 -> oauth2
@@ -45,25 +54,30 @@ public class SecurityConfig {
         return http.build();
     }
 
+    // work with database
     @Bean
     DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
         auth.setUserDetailsService(userDetailsService);
         auth.setPasswordEncoder(passwordEncoder);
+        // auth.authenticate()
         return auth;
     }
 
-    @Bean
-    JwtAuthenticationConverter jwtAuthenticationConverter() {
-        JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
-        //converter.setPrincipalClaimName("authority");
-        return converter;
-    }
-
+    // work with token
     @Bean
     JwtAuthenticationProvider jwtAuthenticationProvider(@Qualifier("jwtDecoderRefreshToken") JwtDecoder jwtDecoderRefreshToken) {
         JwtAuthenticationProvider provider = new JwtAuthenticationProvider(jwtDecoderRefreshToken);
         provider.setJwtAuthenticationConverter(jwtAuthenticationConverter());
         return provider;
     }
+
+
+    @Bean
+    JwtAuthenticationConverter jwtAuthenticationConverter() {
+        //converter.setPrincipalClaimName("authority");
+        return new JwtAuthenticationConverter();
+    }
+
+
 }

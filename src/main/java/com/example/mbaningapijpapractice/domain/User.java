@@ -2,10 +2,9 @@ package com.example.mbaningapijpapractice.domain;
 
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-import org.hibernate.annotations.Fetch;
+
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -81,4 +80,6 @@ public class User {
     )
     private List<Role> roles;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    private List<File> files;
 }

@@ -1,4 +1,4 @@
-package com.example.mbaningapijpapractice.auth;
+package com.example.mbaningapijpapractice.features.auth;
 
 import com.example.mbaningapijpapractice.domain.EmailVerification;
 import com.example.mbaningapijpapractice.domain.User;

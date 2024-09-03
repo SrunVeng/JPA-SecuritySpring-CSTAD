@@ -1,4 +1,4 @@
-package com.example.mbaningapijpapractice.auth.dto;
+package com.example.mbaningapijpapractice.features.auth.dto;
 
 import jakarta.validation.constraints.NotBlank;
 

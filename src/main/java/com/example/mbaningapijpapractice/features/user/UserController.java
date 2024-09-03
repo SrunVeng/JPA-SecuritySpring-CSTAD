@@ -1,10 +1,11 @@
 package com.example.mbaningapijpapractice.features.user;
 
 
-import com.example.mbaningapijpapractice.features.card.CardTypeService;
-import com.example.mbaningapijpapractice.features.card.dto.CardTypeResponse;
 import com.example.mbaningapijpapractice.features.user.dto.Request.CreateUserRequest;
+import com.example.mbaningapijpapractice.features.user.dto.Request.ResetPasswordRequest;
+import com.example.mbaningapijpapractice.features.user.dto.Request.VerifyResetPasswordRequest;
 import com.example.mbaningapijpapractice.features.user.dto.UserResponse;
+import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -43,6 +44,16 @@ public class UserController {
     @GetMapping("/phoneNo/{phoneNumber}")
     UserResponse findUserByPhoneNumber(@PathVariable String phoneNumber) {
         return userService.findUserByPhoneNumber(phoneNumber);
+    }
+
+    @PostMapping("/resetPassword")
+    void resetPassword(@RequestBody ResetPasswordRequest resetPasswordRequest) throws MessagingException {
+        userService.resetPassword(resetPasswordRequest);
+    }
+
+    @PostMapping("/verifyResetPassword")
+    void verifyResetPassword(@RequestBody VerifyResetPasswordRequest verifyResetPasswordRequest)  {
+        userService.verifyResetPassword(verifyResetPasswordRequest);
     }
 
 }

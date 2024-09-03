@@ -1,10 +1,12 @@
 package com.example.mbaningapijpapractice.features.user;
 
 import com.example.mbaningapijpapractice.features.user.dto.Request.CreateUserRequest;
+import com.example.mbaningapijpapractice.features.user.dto.Request.ResetPasswordRequest;
+import com.example.mbaningapijpapractice.features.user.dto.Request.VerifyResetPasswordRequest;
 import com.example.mbaningapijpapractice.features.user.dto.UserResponse;
+import jakarta.mail.MessagingException;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserService {
 
@@ -22,5 +24,10 @@ public interface UserService {
 
     //Create New User
     UserResponse createNewUser(CreateUserRequest createUserRequest);
+
+
+    void resetPassword(ResetPasswordRequest resetPasswordRequest) throws MessagingException;
+
+    void verifyResetPassword(VerifyResetPasswordRequest verifyResetPasswordRequest) ;
 
 }

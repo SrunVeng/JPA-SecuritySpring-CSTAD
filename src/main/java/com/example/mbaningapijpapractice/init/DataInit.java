@@ -1,7 +1,7 @@
 package com.example.mbaningapijpapractice.init;
 
 
-import com.example.mbaningapijpapractice.auth.RoleRepository;
+import com.example.mbaningapijpapractice.features.auth.RoleRepository;
 import com.example.mbaningapijpapractice.domain.AccountType;
 import com.example.mbaningapijpapractice.domain.CardType;
 import com.example.mbaningapijpapractice.domain.Role;
@@ -78,7 +78,7 @@ public class DataInit {
 
         roles.add(roleRepository.findById(2).orElseThrow());
         User user1 = User.builder()
-                .email("srunveng@cstad.com")
+                .email("vengsrun2017new@gmail.com")
                 .cityOrProvince("Phnom Penh City")
                 .companyName("ISTAD Technology Center")
                 .createdAt(LocalDate.now())
@@ -107,7 +107,6 @@ public class DataInit {
 
     private void roleInit() {
         List<Role> roles = new ArrayList<>();
-
         Role role1 = Role.builder()
                 .name("ADMIN")
                 .build();

@@ -8,16 +8,18 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/v1/api/")
+@RequestMapping("/v1/api/acc")
 @RequiredArgsConstructor
 public class AccountController {
 
     private final AccountService accountService;
 
+
     @PostMapping("/create")
     void createAccount(@Valid @RequestBody CreateAccountRequest request) {
         accountService.createAccount(request);
     }
+
 
     @GetMapping("/{actNo}")
     AccountDetailResponse findAccByActNo(@PathVariable String actNo) {

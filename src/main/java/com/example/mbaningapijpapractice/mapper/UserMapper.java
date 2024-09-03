@@ -1,7 +1,7 @@
 package com.example.mbaningapijpapractice.mapper;
 
 
-import com.example.mbaningapijpapractice.auth.dto.RegisterRequest;
+import com.example.mbaningapijpapractice.features.auth.dto.RegisterRequest;
 import com.example.mbaningapijpapractice.domain.User;
 import com.example.mbaningapijpapractice.features.user.dto.Request.CreateUserRequest;
 import com.example.mbaningapijpapractice.features.user.dto.UserResponse;
