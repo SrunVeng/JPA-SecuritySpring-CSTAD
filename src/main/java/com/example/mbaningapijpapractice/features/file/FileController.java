@@ -3,6 +3,7 @@ package com.example.mbaningapijpapractice.features.file;
 
 import com.example.mbaningapijpapractice.features.file.dto.FileResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,7 +17,7 @@ public class FileController {
 
     private final FileService fileService;
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public List<FileResponse> upload(@RequestPart List<MultipartFile> files) throws IOException {
         return fileService.upload(files);
     }

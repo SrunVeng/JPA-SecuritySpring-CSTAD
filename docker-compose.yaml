@@ -1,34 +1,33 @@
 services:
-  srun-mobile-banking-api:
-    image: "srun-mobile-banking-api"
+  mobile-banking-api:
+    image: "mobile-banking-api"
     build: .
-    container_name: srun-mobile-banking-api
+    container_name: mobile-banking-api
     ports:
       - 16850:8080
     volumes:
-      - /home/srun/server-file:/file-server/
+      - /Users/srunveng/Desktop/filestorage:/file-server/
     networks:
-      - srun-mobile-banking-net
+      - mobile-banking-net
     depends_on:
-      - srun-mobile-banking-db
+      - mobile-banking-db
 
-  srun-mobile-banking-db:
+  mobile-banking-db:
     image: postgres:16.3-bullseye
-    container_name: srun-mobile-banking-db
+    container_name: mobile-banking-db
     ports:
       - 4456:5432
     environment:
       POSTGRES_PASSWORD: admin
       POSTGRES_USER: sbc11
-      POSTGRES_DB: srun-mobile_banking_db
+      POSTGRES_DB: mobile_banking_db
     volumes:
-      - srun-mobile-banking-vol:/var/lib/postgresql/data
+      - mobile-banking-vol:/var/lib/postgresql/data
     networks:
-      - srun-mobile-banking-net
+      - mobile-banking-net
 
 volumes:
-  srun-mobile-banking-vol:
+  mobile-banking-vol:
 
 networks:
-  srun-mobile-banking-net:
-    driver: bridge
+  mobile-banking-net:

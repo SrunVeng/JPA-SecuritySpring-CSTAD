@@ -34,14 +34,12 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public List<FileResponse> upload(List<MultipartFile> files) throws IOException {
-
         List<FileResponse> responses = new ArrayList<>();
 
         for (MultipartFile file : files) {
             responses.add(upload(file));
 
         }
-
         return responses;
     }
 
@@ -67,6 +65,7 @@ public class FileServiceImpl implements FileService {
 
         Path path = Path.of(serverPath + newName);
         Files.copy(file.getInputStream(), path);
+
 
         FileResponse response = FileResponse.builder()
                 .name(newName)

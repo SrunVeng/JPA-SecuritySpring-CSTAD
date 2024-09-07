@@ -46,7 +46,7 @@ public class UserController {
         return userService.findUserByPhoneNumber(phoneNumber);
     }
 
-    @PostMapping("/resetPassword")
+    @PatchMapping("/resetPassword")
     void resetPassword(@RequestBody ResetPasswordRequest resetPasswordRequest) throws MessagingException {
         userService.resetPassword(resetPasswordRequest);
     }

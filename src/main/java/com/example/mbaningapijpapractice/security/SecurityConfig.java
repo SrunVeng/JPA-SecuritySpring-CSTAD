@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -42,7 +41,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET,"/v1/api/account-types").permitAll()
                         .requestMatchers(HttpMethod.POST, "/v1/api/auth/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/file/**").permitAll()
-                        .anyRequest().authenticated())
+                        .anyRequest().permitAll())
                 //.httpBasic(Customizer.withDefaults())
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt(jwtConfigurer -> jwtConfigurer
